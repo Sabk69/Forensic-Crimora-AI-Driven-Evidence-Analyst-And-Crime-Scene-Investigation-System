@@ -270,7 +270,11 @@ static void printOptions(const map<string, int>& options) {
     for (const auto& item : options) { cout << (first ? "" : ", ") << item.first; first = false; }
     cout << "\n";
 }
-
+// allowed range for each numeric column (min, max) - taken from the dataset
+static const map<string, pair<int,int>> NUMBER_RANGES = {
+    {"Year", {1980, 2014}}, {"Month", {1, 12}},
+    {"Victim Age", {0, 99}}, {"Victim Count", {1, 11}}
+};
 // manual entry: type text (Male, Sheriff, 1995...), r = random value for that column, ? = show choices
 static vector<double> enterSample(const vector<string>& features, const vector<vector<double>>& rows, mt19937& rng) {
     cout << "\nType each value in plain text (for example: Male, Sheriff, Texas, 1995).\n"
@@ -280,6 +284,8 @@ static vector<double> enterSample(const vector<string>& features, const vector<v
         const string& name = features[f];
         auto cat = enc.featureMaps.find(name);
         if (cat != enc.featureMaps.end() && cat->second.size() <= 10) { cout << "(" << name << " choices: "; printOptions(cat->second); cout << ")\n"; }
+                auto range = NUMBER_RANGES.find(name);
+        if (range != NUMBER_RANGES.end()) cout << "(" << name << " must be a whole number from " << range->second.first << " to " << range->second.second << ")\n";
         while (true) {
             string text = readLine(name + ": ");
             if (lower(text) == "r") {
@@ -308,8 +314,14 @@ static vector<double> enterSample(const vector<string>& features, const vector<v
                 cout << "   '" << text << "' is not a known " << name << ". Type ? to see the choices, or r for random.\n";
             } else {
                 try {
-                    size_t used = 0; double value = stod(text, &used);
+                                       size_t used = 0; double value = stod(text, &used);
                     if (used != text.size()) throw invalid_argument("extra text");
+                    if (range != NUMBER_RANGES.end() &&
+                        (value < range->second.first || value > range->second.second || value != floor(value))) {
+                        cout << "   " << name << " must be a whole number from " << range->second.first
+                             << " to " << range->second.second << ".\n";
+                        continue;
+                    }
                     row.push_back(value); break;
                 } catch (...) { cout << "   Please type a number for " << name << " (or r for random).\n"; }
             }
@@ -395,12 +407,18 @@ int main(int argc, char* argv[]) {
             cout << "1. Train all five targets and evaluate models\n";
             cout << "2. Predict a case (type a sample or use a random dataset row)\n";
             cout << "3. Exit\n\nEnter your choice: ";
-            int choice; if (!(cin >> choice)) return 0;
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        int choice = 0;
+            string choiceText = readLine("");   // the prompt was already printed above
+            if (choiceText == "1" || choiceText == "2" || choiceText == "3") choice = choiceText[0] - '0';
             if (choice == 3) { cout << "Goodbye.\n"; break; }
             if (choice == 1) {
-                cout << "Save/update learned model patterns in TXT and JSON for future predictions? (y/n): ";
-                char answer; cin >> answer; bool save = answer == 'y' || answer == 'Y';
+                            string answer;
+                while (true) {
+                    answer = lower(readLine("Save/update learned model patterns in TXT and JSON for future predictions? (y/n): "));
+                    if (answer == "y" || answer == "n") break;
+                    cout << "Please type y or n.\n";
+                }
+                bool save = answer == "y";
                 for (const string& target : TARGETS) trainTarget(filename, target, save);
             } else if (choice == 2) {
                 predictionMenu(filename);

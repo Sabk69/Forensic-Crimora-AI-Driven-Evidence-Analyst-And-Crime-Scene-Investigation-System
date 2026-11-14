@@ -1,20 +1,20 @@
 Sample details:
   Agency Type       : Municipal Police
-  City              : York
-  State             : South Carolina
-  Year              : 1996
+  City              : Griggs
+  State             : North Carolina
+  Year              : 1993
   Month             : 1
-  Crime Type        : Murder or Manslaughter
-  Victim Sex        : Male
-  Victim Age        : 19
-  Victim Race       : White
+  Crime Type        : Manslaughter by Negligence
+  Victim Sex        : Unknown
+  Victim Age        : 0
+  Victim Race       : Black
   Victim Ethnicity  : Unknown
-  Victim Count      : 1
-  Record Source     : FBI
+  Victim Count      : 2
+  Record Source     : FOIA
 
 Predictions:
-  Perpetrator Sex       : Male  (confidence 0.7813)
-  Perpetrator Age       : 22.6 years
-  Perpetrator Race      : White  (confidence 0.7489)
-  Perpetrator Ethnicity : Not Hispanic  (confidence 0.8747)
-  Weapon                : Firearm  (confidence 0.3927)
+  Perpetrator Sex       : Female  (confidence 0.9269)
+  Perpetrator Age       : 27.8 years
+  Perpetrator Race      : Black  (confidence 0.8368)
+  Perpetrator Ethnicity : Not Hispanic  (confidence 0.9737)
+  Weapon                : Fire  (confidence 0.8049)
