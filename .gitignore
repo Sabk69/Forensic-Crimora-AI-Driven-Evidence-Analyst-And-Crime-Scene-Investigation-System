@@ -1,0 +1,9 @@
+# Compiled executables & object files
+*.exe
+*.o
+*.obj
+
+# Ignore large model/pattern files over GitHub's 100 MB limit
+models/*.json
+models/*.txt
+models/*.model

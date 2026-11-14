@@ -1,0 +1,20 @@
+Sample details:
+  Agency Type       : Municipal Police
+  City              : York
+  State             : South Carolina
+  Year              : 1996
+  Month             : 1
+  Crime Type        : Murder or Manslaughter
+  Victim Sex        : Male
+  Victim Age        : 19
+  Victim Race       : White
+  Victim Ethnicity  : Unknown
+  Victim Count      : 1
+  Record Source     : FBI
+
+Predictions:
+  Perpetrator Sex       : Male  (confidence 0.7813)
+  Perpetrator Age       : 22.6 years
+  Perpetrator Race      : White  (confidence 0.7489)
+  Perpetrator Ethnicity : Not Hispanic  (confidence 0.8747)
+  Weapon                : Firearm  (confidence 0.3927)

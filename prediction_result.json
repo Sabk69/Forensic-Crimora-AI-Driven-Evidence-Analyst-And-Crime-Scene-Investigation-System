@@ -1,0 +1,9 @@
+{
+  "predictions": [
+    {"target":"Perpetrator Sex", "prediction":"Male", "confidence":0.781261},
+    {"target":"Perpetrator Age", "predicted_value":22.5965},
+    {"target":"Perpetrator Race", "prediction":"White", "confidence":0.748886},
+    {"target":"Perpetrator Ethnicity", "prediction":"Not Hispanic", "confidence":0.874746},
+    {"target":"Weapon", "prediction":"Firearm", "confidence":0.392694}
+  ]
+}
