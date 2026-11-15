@@ -283,7 +283,12 @@ static vector<double> enterSample(const vector<string>& features, const vector<v
     for (int f = 0; f < (int)features.size(); f++) {
         const string& name = features[f];
         auto cat = enc.featureMaps.find(name);
-        if (cat != enc.featureMaps.end() && cat->second.size() <= 10) { cout << "(" << name << " choices: "; printOptions(cat->second); cout << ")\n"; }
+        map<string, int> options;
+if (cat != enc.featureMaps.end()) {
+    options = cat->second;
+    if (name == "Victim Sex") options.erase("Unknown");
+}
+if (cat != enc.featureMaps.end() && options.size() <= 10) { cout << "(" << name << " choices: "; printOptions(options); cout << ")\n"; }
                 auto range = NUMBER_RANGES.find(name);
         if (range != NUMBER_RANGES.end()) cout << "(" << name << " must be a whole number from " << range->second.first << " to " << range->second.second << ")\n";
         while (true) {
@@ -302,13 +307,13 @@ static vector<double> enterSample(const vector<string>& features, const vector<v
                 break;
             }
             if (text == "?") {
-                if (cat != enc.featureMaps.end()) { cout << "Choices: "; printOptions(cat->second); }
+                if (cat != enc.featureMaps.end()) { cout << "Choices: "; printOptions(options); }
                 else cout << "Type a number.\n";
                 continue;
             }
             if (cat != enc.featureMaps.end()) {
                 bool found = false;
-                for (const auto& item : cat->second)
+                for (const auto& item : options)
                     if (lower(item.first) == lower(text)) { row.push_back(item.second); found = true; break; }
                 if (found) break;
                 cout << "   '" << text << "' is not a known " << name << ". Type ? to see the choices, or r for random.\n";
@@ -402,7 +407,7 @@ int main(int argc, char* argv[]) {
         catch (const exception& e) { cout << "Warning: " << e.what() << "\n"; }
     _mkdir("models");
         while (true) {
-            cout << "\n========================================\n   HOMICIDE PREDICTION SYSTEM\n========================================\n";
+            cout << "\n=========================================================================\n Forensic Crimora: Crime Scene Investigation System \n=========================================================================\n";
             cout << "Dataset: " << filename << (encLoaded ? "   |   Mappings: " + encodingFile : "") << "\n\n";
             cout << "1. Train all five targets and evaluate models\n";
             cout << "2. Predict a case (type a sample or use a random dataset row)\n";

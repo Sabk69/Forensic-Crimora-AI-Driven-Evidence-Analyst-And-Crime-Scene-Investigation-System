@@ -1,20 +1,20 @@
 Sample details:
   Agency Type       : Municipal Police
-  City              : Griggs
-  State             : North Carolina
-  Year              : 1993
-  Month             : 1
-  Crime Type        : Manslaughter by Negligence
-  Victim Sex        : Unknown
-  Victim Age        : 0
-  Victim Race       : Black
-  Victim Ethnicity  : Unknown
-  Victim Count      : 2
-  Record Source     : FOIA
+  City              : Los Angeles
+  State             : California
+  Year              : 2007
+  Month             : 4
+  Crime Type        : Murder or Manslaughter
+  Victim Sex        : Male
+  Victim Age        : 47
+  Victim Race       : White
+  Victim Ethnicity  : Hispanic
+  Victim Count      : 1
+  Record Source     : FBI
 
 Predictions:
-  Perpetrator Sex       : Female  (confidence 0.9269)
-  Perpetrator Age       : 27.8 years
-  Perpetrator Race      : Black  (confidence 0.8368)
-  Perpetrator Ethnicity : Not Hispanic  (confidence 0.9737)
-  Weapon                : Fire  (confidence 0.8049)
+  Perpetrator Sex       : Male  (confidence 0.8657)
+  Perpetrator Age       : 30.5 years
+  Perpetrator Race      : White  (confidence 0.6739)
+  Perpetrator Ethnicity : Hispanic  (confidence 0.9065)
+  Weapon                : Knife  (confidence 0.4773)

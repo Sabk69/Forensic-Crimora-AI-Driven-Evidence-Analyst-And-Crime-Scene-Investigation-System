@@ -1,9 +1,9 @@
 {
   "predictions": [
-    {"target":"Perpetrator Sex", "prediction":"Female", "confidence":0.926873},
-    {"target":"Perpetrator Age", "predicted_value":27.7994},
-    {"target":"Perpetrator Race", "prediction":"Black", "confidence":0.836825},
-    {"target":"Perpetrator Ethnicity", "prediction":"Not Hispanic", "confidence":0.973667},
-    {"target":"Weapon", "prediction":"Fire", "confidence":0.804876}
+    {"target":"Perpetrator Sex", "prediction":"Male", "confidence":0.865669},
+    {"target":"Perpetrator Age", "predicted_value":30.4636},
+    {"target":"Perpetrator Race", "prediction":"White", "confidence":0.673934},
+    {"target":"Perpetrator Ethnicity", "prediction":"Hispanic", "confidence":0.906491},
+    {"target":"Weapon", "prediction":"Knife", "confidence":0.477329}
   ]
 }
