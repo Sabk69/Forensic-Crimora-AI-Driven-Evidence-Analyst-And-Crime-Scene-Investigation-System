@@ -1,4 +1,4 @@
-# Homicide Prediction System (Modular C++)
+# Forensic Crimora 
 
 This project predicts five targets from your homicide dataset:
 
